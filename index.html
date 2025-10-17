@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdur Rahman Onik - Digital Forensics Researcher</title>
+    <title>Abdur Rahman Onik - CV</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
 
         * {
             margin: 0;
@@ -13,49 +13,317 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #0066cc;
-            --secondary: #00a8e8;
-            --accent: #6c5ce7;
-            --dark: #1a1a2e;
-            --light-bg: #f8f9fa;
-            --white: #ffffff;
-            --text: #2d3436;
-            --text-light: #636e72;
-            --border: #e1e8ed;
-            --success: #00b894;
-            --highlight: #fff3cd;
-        }
-
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--light-bg);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .gradient-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
+        .cv-container {
             width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            opacity: 0.05;
-            z-index: -1;
+            max-width: 1400px;
+            height: 95vh;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 30px 90px rgba(0,0,0,0.4);
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            overflow: hidden;
+            animation: slideIn 0.8s ease-out;
+            position: relative;
         }
 
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .sidebar {
+            background: linear-gradient(180deg, #1a1a2e 0%, #0f0f1e 100%);
             color: white;
-            padding: 5rem 2rem 4rem;
-            text-align: center;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
             position: relative;
             overflow: hidden;
         }
 
-        header::before {
+        .sidebar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(118, 75, 162, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .profile-section {
+            text-align: center;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 52px;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            position: relative;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .profile-img::before {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            opacity: 0.3;
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #fff 0%, #00d4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .title {
+            font-size: 12px;
+            color: #00d4ff;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #00d4ff;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 12px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #00d4ff, #667eea);
+            border-radius: 2px;
+        }
+
+        .sidebar > div {
+            animation: fadeInUp 0.6s ease-out both;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sidebar > div:nth-child(2) { animation-delay: 0.3s; }
+        .sidebar > div:nth-child(3) { animation-delay: 0.4s; }
+        .sidebar > div:nth-child(4) { animation-delay: 0.5s; }
+        .sidebar > div:nth-child(5) { animation-delay: 0.6s; }
+        .sidebar > div:nth-child(6) { animation-delay: 0.7s; }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 11px;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+        }
+
+        .contact-item a {
+            color: #b2bec3;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #00d4ff;
+        }
+
+        .skill-item {
+            background: rgba(0, 212, 255, 0.1);
+            padding: 7px 13px;
+            border-radius: 16px;
+            font-size: 10px;
+            display: inline-block;
+            margin: 3px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .education-item, .award-item {
+            margin-bottom: 18px;
+            font-size: 11px;
+            line-height: 1.5;
+            padding: 12px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            border-left: 3px solid #00d4ff;
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover, .award-item:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateX(5px);
+        }
+
+        .edu-degree {
+            font-weight: 600;
+            font-size: 12px;
+            color: #00d4ff;
+            margin-bottom: 5px;
+        }
+
+        .edu-school {
+            font-size: 11px;
+            margin-bottom: 3px;
+        }
+
+        .edu-meta {
+            font-size: 10px;
+            color: #b2bec3;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .stat-box {
+            background: rgba(102, 126, 234, 0.2);
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .stat-box:hover {
+            background: rgba(102, 126, 234, 0.3);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: #00d4ff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat-label {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 5px;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            padding: 35px 40px;
+            overflow-y: auto;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .header-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            color: white;
+            position: relative;
+            overflow: hidden;
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .header-section::before {
             content: '';
             position: absolute;
             top: 0;
@@ -63,226 +331,241 @@
             width: 100%;
             height: 100%;
             background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
         }
 
-        .hero-content {
+        .header-section h1 {
+            font-size: 30px;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 12px;
             position: relative;
             z-index: 1;
         }
 
-        .hero-title {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1.1rem, 3vw, 1.5rem);
-            margin-bottom: 0.5rem;
-            font-weight: 300;
+        .header-section p {
+            font-size: 12px;
+            line-height: 1.7;
             opacity: 0.95;
-        }
-
-        .hero-location {
-            font-size: 1rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-            margin-top: 2.5rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            background: rgba(255,255,255,0.15);
-            padding: 1.5rem 2rem;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            font-family: 'Fira Code', monospace;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0.9;
-            margin-top: 0.3rem;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2.5rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-link {
-            color: white;
-            text-decoration: none;
-            padding: 0.7rem 1.5rem;
-            background: rgba(255,255,255,0.2);
-            border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .contact-link:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        nav {
-            position: sticky;
-            top: 0;
-            background: white;
-            padding: 1rem 2rem;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 2.5rem;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            transition: color 0.3s;
             position: relative;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            z-index: 1;
         }
 
-        nav a::after {
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .content-section {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            animation: fadeIn 0.8s ease-out both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-section:nth-child(1) { animation-delay: 0.1s; }
+        .content-section:nth-child(2) { animation-delay: 0.2s; }
+        .content-section:nth-child(3) { animation-delay: 0.3s; }
+        .content-section:nth-child(4) { animation-delay: 0.4s; }
+        .content-section:nth-child(5) { animation-delay: 0.5s; }
+        .content-section:nth-child(6) { animation-delay: 0.6s; }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.15);
+        }
+
+        .content-section.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .content-section h2 {
+            font-size: 17px;
+            color: #667eea;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+        }
+
+        .content-section h2::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #00d4ff, transparent);
+        }
+
+        .experience-item {
+            margin-bottom: 18px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #e1e8ed;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            padding-left: 10px;
+            border-left: 3px solid #667eea;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .exp-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #2d3436;
+            margin-bottom: 4px;
+        }
+
+        .exp-company {
+            font-size: 11px;
+            color: #667eea;
+            margin-bottom: 3px;
+            font-weight: 500;
+        }
+
+        .exp-date {
+            font-size: 10px;
+            color: #b2bec3;
+            margin-bottom: 10px;
+        }
+
+        .exp-desc {
+            font-size: 11px;
+            color: #636e72;
+            line-height: 1.6;
+        }
+
+        .exp-desc ul {
+            margin-left: 18px;
+            margin-top: 6px;
+        }
+
+        .exp-desc li {
+            margin-bottom: 4px;
+            font-size: 10px;
+        }
+
+        .publication-item {
+            margin-bottom: 18px;
+            padding: 15px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .publication-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
             left: 0;
             width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(102, 126, 234, 0.1), transparent);
+            transition: width 0.4s ease;
         }
 
-        nav a:hover {
-            color: var(--primary);
-        }
-
-        nav a:hover::after {
+        .publication-item:hover::before {
             width: 100%;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
+        .publication-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+            border-left-width: 6px;
         }
 
-        section {
-            background: white;
-            margin: 2rem 0;
-            padding: 3rem;
+        .pub-authors {
+            font-size: 11px;
+            color: #2d3436;
+            margin-bottom: 5px;
+            line-height: 1.5;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pub-authors strong {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .pub-title {
+            font-size: 11px;
+            color: #2d3436;
+            margin-bottom: 5px;
+            line-height: 1.5;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pub-meta {
+            font-size: 10px;
+            color: #636e72;
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pub-doi {
+            font-size: 9px;
+            color: #b2bec3;
+            font-family: monospace;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pub-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #00b894, #00cec9);
+            color: white;
+            padding: 3px 10px;
             border-radius: 12px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
-            transition: all 0.3s ease;
-        }
-
-        section:hover {
-            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
-            transform: translateY(-2px);
-        }
-
-        h2 {
-            font-size: 2.2rem;
-            margin-bottom: 2rem;
-            color: var(--primary);
+            font-size: 8px;
             font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 3px solid var(--primary);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 3px 10px rgba(0, 184, 148, 0.3);
+            animation: glow 2s ease-in-out infinite;
         }
 
-        h2::before {
-            content: '▸';
-            color: var(--secondary);
-            font-size: 2rem;
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 3px 10px rgba(0, 184, 148, 0.3); }
+            50% { box-shadow: 0 5px 20px rgba(0, 184, 148, 0.6); }
         }
 
-        h3 {
-            color: var(--secondary);
-            margin-top: 2.5rem;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-
-        .research-intro {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 2rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            border-left: 4px solid var(--primary);
-        }
-
-        .research-intro p {
-            color: var(--text);
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        .research-intro p:last-child {
-            margin-bottom: 0;
-        }
-
-        .highlight-text {
-            background: var(--highlight);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-weight: 600;
-            color: var(--dark);
-        }
-
-        .research-grid {
+        .research-areas {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
         }
 
         .research-card {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
-            padding: 2rem;
-            border-radius: 10px;
-            border: 2px solid var(--border);
-            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 15px;
+            border-radius: 12px;
+            border: 2px solid #e1e8ed;
+            transition: all 0.4s ease;
             position: relative;
+            overflow: hidden;
         }
 
         .research-card::before {
@@ -290,541 +573,458 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(180deg, var(--primary), var(--secondary));
-            border-radius: 10px 0 0 10px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .research-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
         }
 
         .research-card:hover::before {
-            opacity: 1;
+            transform: scaleX(1);
+        }
+
+        .research-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: #667eea;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
         }
 
         .research-card h4 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
+            font-size: 11px;
+            color: #667eea;
+            margin-bottom: 8px;
             font-weight: 600;
         }
 
         .research-card p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .publication {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: #f8f9fa;
-            border-left: 4px solid var(--secondary);
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .publication:hover {
-            background: #e9ecef;
-            transform: translateX(5px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-
-        .publication-title {
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 0.5rem;
-            font-size: 1.05rem;
+            font-size: 10px;
+            color: #636e72;
             line-height: 1.5;
         }
 
-        .publication-meta {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            font-family: 'Fira Code', monospace;
-            margin-bottom: 0.7rem;
-        }
-
-        .publication p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .publication-badge {
-            display: inline-block;
-            background: var(--success);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-right: 0.5rem;
-        }
-
-        .education-item {
-            margin-bottom: 2.5rem;
-            padding: 1.5rem;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
-            border-radius: 10px;
-            border-left: 4px solid var(--accent);
-        }
-
-        .education-title {
-            color: var(--text);
-            font-weight: 600;
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .education-school {
-            color: var(--secondary);
-            font-size: 1.05rem;
-            margin: 0.5rem 0;
-            font-weight: 500;
-        }
-
-        .education-meta {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            font-family: 'Fira Code', monospace;
-        }
-
-        .skills-container {
-            margin-top: 1.5rem;
-        }
-
-        .skill-category {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: #f8f9fa;
-            border-radius: 10px;
-        }
-
-        .skill-category h4 {
-            color: var(--primary);
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            font-family: 'Fira Code', monospace;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .skills-list {
+        .skills-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.75rem;
+            gap: 8px;
         }
 
-        .skill-tag {
-            background: white;
-            color: var(--primary);
-            padding: 0.6rem 1.2rem;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            border: 2px solid var(--primary);
+        .skill-badge {
+            background: linear-gradient(135deg, #e8eef5, #ffffff);
+            color: #667eea;
+            padding: 6px 12px;
+            border-radius: 14px;
+            font-size: 10px;
             font-weight: 500;
+            border: 2px solid #667eea;
             transition: all 0.3s ease;
-        }
-
-        .skill-tag:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
-        }
-
-        .award-item {
-            padding: 1.5rem;
-            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
-            border-left: 4px solid #fdcb6e;
-            margin-bottom: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(253, 203, 110, 0.2);
-        }
-
-        .award-title {
-            color: var(--dark);
-            font-weight: 600;
-            font-size: 1.05rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .award-meta {
-            color: #636e72;
-            font-size: 0.9rem;
-        }
-
-        .experience-item {
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 2px solid var(--border);
-        }
-
-        .experience-item:last-child {
-            border-bottom: none;
-        }
-
-        .experience-header {
-            margin-bottom: 1rem;
-            padding: 1.5rem;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
-            border-radius: 10px;
-        }
-
-        .experience-title {
-            color: var(--primary);
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-org {
-            color: var(--secondary);
-            font-size: 1.1rem;
-            margin: 0.5rem 0;
-            font-weight: 500;
-        }
-
-        .experience-date {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            font-family: 'Fira Code', monospace;
-        }
-
-        .experience-item ul {
-            margin-left: 2rem;
-            margin-top: 1rem;
-        }
-
-        .experience-item li {
-            color: var(--text-light);
-            margin-bottom: 0.8rem;
-            line-height: 1.6;
-        }
-
-        .experience-item li::marker {
-            color: var(--primary);
-        }
-
-        .course-item {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 2px solid var(--border);
-            margin-bottom: 1rem;
-        }
-
-        .course-title {
-            color: var(--secondary);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .course-meta {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            margin-top: 1.5rem;
-            border: none;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 25px rgba(0, 102, 204, 0.4);
-        }
-
-        footer {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .skill-badge:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
-            margin-top: 4rem;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
         }
 
-        footer p {
-            margin: 0.5rem 0;
-        }
-
-        .reviewer-list {
-            margin-left: 2rem;
-            margin-top: 1rem;
-        }
-
-        .reviewer-list li {
-            color: var(--text-light);
-            margin-bottom: 0.8rem;
-            line-height: 1.6;
-        }
-
-        .reviewer-list li::marker {
-            color: var(--success);
-        }
-
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
+        @media (max-width: 1200px) {
+            .cv-container {
+                grid-template-columns: 1fr;
+                height: auto;
+                max-height: none;
             }
-
-            section {
-                padding: 2rem;
+            
+            .sidebar {
+                order: 2;
             }
-
-            .hero-stats {
-                gap: 1.5rem;
+            
+            .main-content {
+                order: 1;
             }
-
-            nav ul {
-                gap: 1rem;
-            }
-
-            .research-grid {
+            
+            .content-grid {
                 grid-template-columns: 1fr;
             }
 
-            h2 {
-                font-size: 1.8rem;
+            .research-areas {
+                grid-template-columns: 1fr;
             }
         }
 
-        .fade-in {
-            animation: fadeIn 0.8s ease-in;
+        ::-webkit-scrollbar {
+            width: 10px;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
         }
 
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #667eea, #764ba2);
+            border-radius: 5px;
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-10px); }
-            60% { transform: translateX(-50%) translateY(-5px); }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #764ba2, #667eea);
         }
     </style>
 </head>
 <body>
-    <div class="gradient-bg"></div>
+    <div class="cv-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="profile-section">
+                <div class="profile-img">AO</div>
+                <div class="name">Abdur Rahman Onik</div>
+                <div class="title">PhD Candidate in Computer Science</div>
+            </div>
 
-    <header class="fade-in">
-        <div class="hero-content">
-            <h1 class="hero-title">ABDUR RAHMAN ONIK</h1>
-            <p class="hero-subtitle">PhD Candidate | Digital Forensics & Cybersecurity Researcher</p>
-            <p class="hero-location">📍 Baton Rouge, Louisiana, USA</p>
-            
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <div class="stat-number">411</div>
-                    <div class="stat-label">Citations</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">10+</div>
-                    <div class="stat-label">Publications</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">3.8</div>
-                    <div class="stat-label">GPA</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">7+</div>
-                    <div class="stat-label">Years Experience</div>
+            <div>
+                <div class="section-title">About</div>
+                <div style="font-size: 10px; line-height: 1.6; color: #dfe6e9; text-align: justify;">
+                    Specialized researcher in digital forensics, mobile application security, and privacy analysis. Developing LLM-based frameworks for automated privacy compliance assessment. Published in top-tier venues including ACM Computing Surveys (IF: 28.0). Passionate about bridging privacy policy claims with real-world app behaviors.
                 </div>
             </div>
 
-            <div class="contact-links">
-                <a href="mailto:aonik1@lsu.edu" class="contact-link">📧 aonik1@lsu.edu</a>
-                <a href="https://github.com/rahmanonik" class="contact-link" target="_blank">💻 GitHub</a>
-                <a href="https://linkedin.com/in/rahmanonik18" class="contact-link" target="_blank">💼 LinkedIn</a>
-                <a href="tel:+2258025676" class="contact-link">📱 +225-802-5676</a>
-                <a href="#" class="contact-link" target="_blank">🎓 Google Scholar</a>
+            <div>
+                <div class="section-title">Education</div>
+                <div class="education-item">
+                    <div class="edu-degree">PhD, Computer Science</div>
+                    <div class="edu-school">Louisiana State University</div>
+                    <div class="edu-meta">2022 - 2026 (Expected) | GPA: 3.8/4.0</div>
+                </div>
+                <div class="education-item">
+                    <div class="edu-degree">MS, Computer Science</div>
+                    <div class="edu-school">Louisiana State University</div>
+                    <div class="edu-meta">2022 - 2025 | GPA: 3.8/4.0</div>
+                </div>
+                <div class="education-item">
+                    <div class="edu-degree">BS, Computer Science</div>
+                    <div class="edu-school">AUST, Bangladesh</div>
+                    <div class="edu-meta">2011 - 2015 | GPA: 3.37/4.0</div>
+                </div>
+            </div>
+
+            <div>
+                <div class="section-title">Key Expertise</div>
+                <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+                    <span class="skill-item">Digital Forensics</span>
+                    <span class="skill-item">Mobile Security</span>
+                    <span class="skill-item">Cloud Forensics</span>
+                    <span class="skill-item">Privacy Analysis</span>
+                    <span class="skill-item">LLM Applications</span>
+                    <span class="skill-item">IoT Security</span>
+                    <span class="skill-item">Network Forensics</span>
+                    <span class="skill-item">Vehicle Telematics</span>
+                </div>
+            </div>
+
+            <div>
+                <div class="section-title">Honors & Awards</div>
+                <div class="award-item">
+                    🏆 2nd Place, Geauxlden Mike Innovation Awards
+                    <div style="font-size: 9px; color: #b2bec3; margin-top: 2px;">LSU Graduate Research Symposium, 2024</div>
+                </div>
+                <div class="award-item">
+                    🥈 National Runner-up, Bangladesh Math Olympiad
+                    <div style="font-size: 9px; color: #b2bec3; margin-top: 2px;">2008</div>
+                </div>
+                <div class="award-item">
+                    🥈 National Runner-up, Bangladesh Chemistry Olympiad
+                    <div style="font-size: 9px; color: #b2bec3; margin-top: 2px;">2009</div>
+                </div>
+            </div>
+
+            <div>
+                <div class="section-title">Metrics</div>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-number">411</div>
+                        <div class="stat-label">Citations</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Publications</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">7</div>
+                        <div class="stat-label">h-index</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">7+</div>
+                        <div class="stat-label">Years Exp</div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="section-title">Contact</div>
+                <div class="contact-item">📧 <a href="mailto:aonik1@lsu.edu">aonik1@lsu.edu</a></div>
+                <div class="contact-item">📱 +1 (225) 802-5676</div>
+                <div class="contact-item">📍 Baton Rouge, Louisiana</div>
+                <div class="contact-item">💼 <a href="https://linkedin.com/in/rahmanonik18" target="_blank">linkedin.com/in/rahmanonik18</a></div>
+                <div class="contact-item">💻 <a href="https://github.com/rahmanonik" target="_blank">github.com/rahmanonik</a></div>
+                <div class="contact-item">🎓 <a href="#" target="_blank">Google Scholar Profile</a></div>
             </div>
         </div>
-    </header>
 
-    <nav>
-        <ul>
-            <li><a href="#research">Research</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#publications">Publications</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#awards">Awards</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    <div class="container">
-        <section id="research" class="fade-in">
-            <h2>Research Focus</h2>
-            <div class="research-intro">
-                <p>
-                    My research centers on <strong>security and privacy in mobile applications</strong>, investigating how apps collect, store, and share user data, often contradicting their stated privacy policies. I develop forensic methods to extract and analyze app data from device storage and network traffic, enabling deeper understanding of actual data handling practices.
-                </p>
-                <p>
-                    I am designing a novel framework using <strong>Large Language Models (LLMs)</strong> to automatically parse privacy policies and compare them with empirically observed data collection behaviors. As part of this work, I'm developing the <span class="highlight-text">App Privacy Compliance Index (APCI)</span>, a standardized metric to quantify app transparency and privacy alignment.
-                </p>
-                <p>
-                    My broader goal is to build tools and frameworks that empower end-users, investigators, and regulators to audit mobile applications effectively, bridging the gap between privacy claims and real-world behaviors.
-                </p>
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header-section">
+                <h1>Digital Forensics & Cybersecurity Researcher</h1>
+                <p>Specialized in mobile application security, privacy analysis, and forensic methodologies. Developing novel frameworks using Large Language Models to automatically parse privacy policies and assess app compliance. Passionate about bridging the gap between privacy claims and real-world behaviors through innovative research and practical tools.</p>
             </div>
 
-            <h3>Research Areas</h3>
-            <div class="research-grid">
-                <div class="research-card">
-                    <h4>🔍 Mobile Forensics</h4>
-                    <p>Advanced techniques for extracting and analyzing data from mobile devices, with focus on privacy violations and data handling practices</p>
+            <div class="content-grid">
+                <!-- Research Focus -->
+                <div class="content-section full-width">
+                    <h2>Research Focus & Interests</h2>
+                    <div class="research-areas">
+                        <div class="research-card">
+                            <h4>🔍 Mobile Forensics</h4>
+                            <p>Advanced data extraction & analysis from mobile devices focusing on privacy violations</p>
+                        </div>
+                        <div class="research-card">
+                            <h4>☁️ Cloud Forensics</h4>
+                            <p>Cloud-based data storage investigation in IoT devices & telematics systems</p>
+                        </div>
+                        <div class="research-card">
+                            <h4>🔐 Privacy Analysis</h4>
+                            <p>Automated privacy policy analysis using LLMs for compliance detection</p>
+                        </div>
+                        <div class="research-card">
+                            <h4>🚗 Vehicle Forensics</h4>
+                            <p>Forensic reconstruction of vehicle events through telematics data</p>
+                        </div>
+                        <div class="research-card">
+                            <h4>💬 Secure Messaging</h4>
+                            <p>Systematic analysis of instant messaging apps from forensics perspective</p>
+                        </div>
+                        <div class="research-card">
+                            <h4>🤖 IoT Security</h4>
+                            <p>Security & forensic analysis of IoT devices and cloud ecosystems</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="research-card">
-                    <h4>☁️ Cloud Forensics</h4>
-                    <p>Investigating cloud-based data storage and synchronization in IoT devices, telematics, and mobile applications</p>
+
+                <!-- Academic Experience -->
+                <div class="content-section">
+                    <h2>Academic Experience</h2>
+                    <div class="experience-item">
+                        <div class="exp-title">Research Assistant</div>
+                        <div class="exp-company">BiTlab, Louisiana State University</div>
+                        <div class="exp-date">Jan 2023 - Present</div>
+                        <div class="exp-desc">
+                            <ul>
+                                <li>Published first-author review in ACM Computing Surveys (IF 28.0)</li>
+                                <li>Developed forensic methodologies for Threads & Bluesky (ARES 2024)</li>
+                                <li>Lead author on vehicle event reconstruction & IoT forensics</li>
+                                <li>4 papers under review (ACM Comm, DFRWS EU, NDSS 2026)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="exp-title">Teaching Assistant</div>
+                        <div class="exp-company">LSU Computer Science Dept</div>
+                        <div class="exp-date">Jan 2023 - Dec 2023</div>
+                        <div class="exp-desc">
+                            • Digital Forensics Science<br>
+                            • Data Structures & Algorithms<br>
+                            • Ethics in Computing
+                        </div>
+                    </div>
                 </div>
-                <div class="research-card">
-                    <h4>🔐 Privacy Analysis</h4>
-                    <p>Automated privacy policy analysis using LLMs to detect discrepancies between stated policies and actual behavior</p>
+
+                <!-- Industry Experience -->
+                <div class="content-section">
+                    <h2>Industry Experience</h2>
+                    <div class="experience-item">
+                        <div class="exp-title">Senior Software Engineer</div>
+                        <div class="exp-company">General Pharmaceutical Ltd</div>
+                        <div class="exp-date">Apr 2022 - Jul 2022</div>
+                        <div class="exp-desc">
+                            <ul>
+                                <li>Led Android app development projects</li>
+                                <li>20% app performance improvement</li>
+                                <li>Mentored 2 junior developers</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="exp-title">Software Engineer</div>
+                        <div class="exp-company">Opsonin Pharmaceutical Ltd</div>
+                        <div class="exp-date">Nov 2015 - Apr 2022</div>
+                        <div class="exp-desc">
+                            <ul>
+                                <li>Designed sales & marketing Android apps (5% sales increase)</li>
+                                <li>Built reusable libraries & frameworks</li>
+                                <li>Website UI design (35% page view increase)</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="research-card">
-                    <h4>🚗 Vehicle Forensics</h4>
-                    <p>Forensic reconstruction of vehicle events through telematics and driver-based cloud data analysis</p>
+
+                <!-- Selected Publications -->
+                <div class="content-section full-width">
+                    <h2>Selected Publications (APA Format)</h2>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div>
+                            <div class="publication-item">
+                                <span class="pub-badge">First Author</span>
+                                <div class="pub-authors"><strong>Onik, A. R.</strong>, Brown, J., Walker, C., & Baggili, I. (2025).</div>
+                                <div class="pub-title">A systematic literature review of secure instant messaging applications from a digital forensics perspective.</div>
+                                <div class="pub-meta">ACM Computing Surveys.</div>
+                                <div class="pub-doi">https://doi.org/10.1145/xxxxx</div>
+                            </div>
+
+                            <div class="publication-item">
+                                <span class="pub-badge">First Author</span>
+                                <div class="pub-authors"><strong>Onik, A. R.</strong>, Alsmadi, R., Baggili, I., & Webb, A. M. (2024).</div>
+                                <div class="pub-title">So fresh, so clean: Cloud forensic analysis of the Amazon iRobot Roomba vacuum.</div>
+                                <div class="pub-meta">Forensic Science International: Digital Investigation, 48, 301686.</div>
+                                <div class="pub-doi">https://doi.org/10.1016/j.fsidi.2024.301686</div>
+                            </div>
+
+                            <div class="publication-item">
+                                <span class="pub-badge">Lead Author</span>
+                                <div class="pub-authors"><strong>Onik, A. R.</strong>, Spinosa, T. T., Asad, A. M., & Baggili, I. (2024).</div>
+                                <div class="pub-title">Hit and run: Forensic vehicle event reconstruction through driver-based cloud data from Progressive's snapshot application.</div>
+                                <div class="pub-meta">Forensic Science International: Digital Investigation, 49, 301762.</div>
+                                <div class="pub-doi">https://doi.org/10.1016/j.fsidi.2024.301762</div>
+                            </div>
+
+                            <div class="publication-item">
+                                <div class="pub-authors">Brown, J., <strong>Onik, A. R.</strong>, & Baggili, I. (2024).</div>
+                                <div class="pub-title">Blue skies from (X's) pain: A digital forensic analysis of Threads and Bluesky.</div>
+                                <div class="pub-meta">Proceedings of the 19th International Conference on Availability, Reliability and Security, 1–12.</div>
+                                <div class="pub-doi">https://doi.org/10.1145/xxxxx</div>
+                            </div>
+
+                            <div class="publication-item">
+                                <div class="pub-authors">Kabir, M. R., <strong>Onik, A. R.</strong>, & Samad, T. (2017).</div>
+                                <div class="pub-title">A network intrusion detection framework based on Bayesian network using wrapper approach.</div>
+                                <div class="pub-meta">International Journal of Computer Applications, 166(4), 13–17.</div>
+                                <div class="pub-doi">https://doi.org/10.5120/ijca2017914021</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="publication-item">
+                                <div class="pub-authors">Spinosa, T., <strong>Onik, A. R.</strong>, Rovira, J., & Baggili, I. (2025).</div>
+                                <div class="pub-title">Money on my mind: Forensic investigation of Venmo payment app.</div>
+                                <div class="pub-meta">In Proceedings of the 17th International Workshop on Digital Forensics (WSDF 2025), August 11–14, 2025, Ghent, Belgium.</div>
+                            </div>
+
+                            <div class="publication-item">
+                                <div class="pub-authors"><strong>Onik, A. R.</strong>, Haq, N. F., & Mustahin, W. (2015).</div>
+                                <div class="pub-title">Cross-breed type Bayesian network based intrusion detection system (CBNIDS).</div>
+                                <div class="pub-meta">2015 18th International Conference on Computer and Information Technology (ICCIT), 407–412. IEEE.</div>
+                                <div class="pub-doi">https://doi.org/10.1109/ICCITechn.2015.7488106</div>
+                            </div>
+
+                            <div class="publication-item">
+                                <div class="pub-authors">Haq, N. F., <strong>Onik, A. R.</strong>, & Shah, F. M. (2015).</div>
+                                <div class="pub-title">An ensemble framework of anomaly detection using hybridized feature selection approach (HFSA).</div>
+                                <div class="pub-meta">2015 SAI Intelligent Systems Conference (IntelliSys), 989–995. IEEE.</div>
+                                <div class="pub-doi">https://doi.org/10.1109/IntelliSys.2015.7361254</div>
+                            </div>
+
+                            <div class="publication-item">
+                                <div class="pub-authors">Haq, N. F., <strong>Onik, A. R.</strong>, Hridoy, M. A. K., Rafni, M., Shah, F. M., & Farid, D. M. (2015).</div>
+                                <div class="pub-title">Application of machine learning approaches in intrusion detection system: A survey.</div>
+                                <div class="pub-meta">IJARAI-International Journal of Advanced Research in Artificial Intelligence, 4(3), 9–18.</div>
+                            </div>
+
+                            <div style="margin-top: 15px; padding: 15px; background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%); border-radius: 10px; border-left: 4px solid #fdcb6e;">
+                                <div style="font-size: 11px; font-weight: 600; color: #2d3436; margin-bottom: 8px;">📝 Papers Under Review</div>
+                                <div style="font-size: 10px; color: #636e72; line-height: 1.6;">
+                                    • <strong>ACM Communications</strong> (IF: 22.7) - CrowdStrike Outage Analysis<br>
+                                    • <strong>DFRWS EU 2026</strong> - Burner App Forensics<br>
+                                    • <strong>DFRWS EU 2026</strong> - Humanoid Forensic Readiness<br>
+                                    • <strong>PETS 2026</strong> - Privacy Enhancing Technologies vs Network Forensics
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="research-card">
-                    <h4>💬 Secure Messaging</h4>
-                    <p>Systematic analysis of secure instant messaging applications from digital forensics perspective</p>
+
+                <!-- Technical Skills -->
+                <div class="content-section">
+                    <h2>Technical Skills</h2>
+                    <div style="margin-bottom: 15px;">
+                        <div style="font-size: 11px; font-weight: 600; color: #2d3436; margin-bottom: 8px;">Forensic Tools</div>
+                        <div class="skills-grid">
+                            <span class="skill-badge">EnCase</span>
+                            <span class="skill-badge">FTK</span>
+                            <span class="skill-badge">Autopsy</span>
+                            <span class="skill-badge">Wireshark</span>
+                            <span class="skill-badge">Volatility</span>
+                            <span class="skill-badge">Cellebrite</span>
+                            <span class="skill-badge">AXIOM</span>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <div style="font-size: 11px; font-weight: 600; color: #2d3436; margin-bottom: 8px;">Security Tools</div>
+                        <div class="skills-grid">
+                            <span class="skill-badge">Metasploit</span>
+                            <span class="skill-badge">Burp Suite</span>
+                            <span class="skill-badge">Nmap</span>
+                            <span class="skill-badge">IDA Pro</span>
+                            <span class="skill-badge">Ghidra</span>
+                            <span class="skill-badge">Snort</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="font-size: 11px; font-weight: 600; color: #2d3436; margin-bottom: 8px;">Programming & ML</div>
+                        <div class="skills-grid">
+                            <span class="skill-badge">Python</span>
+                            <span class="skill-badge">Java</span>
+                            <span class="skill-badge">Kotlin</span>
+                            <span class="skill-badge">C/C++</span>
+                            <span class="skill-badge">SQL</span>
+                            <span class="skill-badge">LLMs</span>
+                            <span class="skill-badge">NLP</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="research-card">
-                    <h4>🤖 IoT Security</h4>
-                    <p>Security and forensic analysis of Internet of Things devices and their cloud ecosystems</p>
+
+                <!-- Grants & Presentations -->
+                <div class="content-section">
+                    <h2>Grants & Presentations</h2>
+                    <div class="experience-item">
+                        <div class="exp-title">🔬 Research Grant (NSF)</div>
+                        <div class="exp-company">LUMA: LLM-Guided Mobile API Framework</div>
+                        <div class="exp-date">Submitted September 2025</div>
+                        <div class="exp-desc" style="font-size: 10px;">
+                            SaTC 2.0 proposal for automated digital forensics framework to discover and audit undocumented mobile APIs using Large Language Models
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="exp-title">🎤 Conference Talks</div>
+                        <div class="exp-desc" style="font-size: 10px;">
+                            • <strong>DFRWS USA 2024</strong> - Vehicle Event Reconstruction (LSU, Baton Rouge)<br>
+                            • <strong>DFRWS EU 2024</strong> - iRobot Roomba Analysis (University of Zaragoza, Spain)
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="exp-title">📊 Poster Presentations</div>
+                        <div class="exp-desc" style="font-size: 10px;">
+                            • LSU Graduate Research Symposium 2024<br>
+                            • DFRWS USA 2025 (3 posters accepted)
+                        </div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="exp-title">📝 Reviewer Activities</div>
+                        <div class="exp-desc" style="font-size: 10px;">
+                            • Multimedia Systems (Springer) - 2025<br>
+                            • Scientific Reports (Nature) - 2025<br>
+                            • Knowledge-Based Systems (Elsevier)<br>
+                            • DFRWS USA & EU (Subreviewer)
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
-
-        <section id="education" class="fade-in">
-            <h2>Education</h2>
-            
-            <div class="education-item">
-                <div class="education-title">PhD in Computer Science and Engineering</div>
-                <div class="education-school">Louisiana State University, Baton Rouge, LA</div>
-                <div class="education-meta">2022 – Present (Expected Spring 2026) | GPA: 3.8/4.0</div>
-            </div>
-
-            <div class="education-item">
-                <div class="education-title">Master of Science in Computer Science and Engineering</div>
-                <div class="education-school">Louisiana State University, Baton Rouge, LA</div>
-                <div class="education-meta">2022 – 2025 | GPA: 3.8/4.0</div>
-            </div>
-
-            <div class="education-item">
-                <div class="education-title">Bachelor of Science in Computer Science and Engineering</div>
-                <div class="education-school">Ahsanullah University of Science and Technology, Bangladesh</div>
-                <div class="education-meta">2011 – 2015 | GPA: 3.37/4.0</div>
-            </div>
-        </section>
-
-        <section id="publications" class="fade-in">
-            <h2>Publications</h2>
-            <p style="color: var(--text-light); margin-bottom: 2rem; font-size: 1.05rem;">
-                <strong>Total Citations: 411</strong> | <strong>h-index: 7</strong>
-            </p>
-            
-            <div class="publication">
-                <span class="publication-badge">First Author</span>
-                <div class="publication-title">A Systematic Literature Review of Secure Instant Messaging Applications from a Digital Forensics Perspective</div>
-                <div class="publication-meta">ACM Computing Surveys (IF: 28.0, Ranked 1/143 in CS Theory & Methods) | 2025</div>
-                <p>Comprehensive review of secure messaging forensics methodologies and analysis techniques</p>
-            </div>
-
-            <div class="publication">
-                <div class="publication-title">Money on My Mind: Forensic Investigation of Venmo Payment App</div>
-                <div class="publication-meta">17th International Workshop on Digital Forensics (WSDF 2025) | Ghent, Belgium</div>
-                <p>Analysis of payment application forensics and data recovery techniques</p>
-            </div>
-
-            <div class="publication">
-                <span class="publication-badge">First Author</span>
-                <div class="publication-title">So fresh, so clean: Cloud forensic analysis of the Amazon iRobot Roomba vacuum</div>
-                <div class="publication-meta">Forensic Science International: Digital Investigation, 48:301686 | Elsevier | 2024</div>
-                <p>Cloud forensics and privacy research on IoT devices</p>
-            </div>
-
-            <div class="publication">
-                <span class="publication-badge">Lead Author</span>
-                <div class="publication-title">Hit and run: Forensic vehicle event reconstruction through driver-based cloud data from Progressive's snapshot application</div>
-                <div class="publication-meta">Forensic Science International: Digital Investigation, 49:301762 | Elsevier | 2024</div>
-                <p>Novel methodology for vehicle event reconstruction using telematics data</p>
-            </div>
-
-            <div class="publication">
-                <div class="publication-title">Blue Skies from (X's) Pain: A Digital Forensic Analysis of Threads and Bluesky</div>
-                <div class="publication-meta">19th International Conference on Availability, Reliability and Security (ARES 2024)</div>
-                <p>Forensic methodologies for emerging social media platforms</p>
-            </div>
-
-            <div class="publication">
-                <div class="publication-title">A network intrusion detection framework based on Bayesian network using wrapper approach</div>
-                <div class="publication-meta">International Journal of Computer Applications, 166(4):13–17 | 2017</div>
-                <p>Machine learning approach to network security and intrusion detection</p>
-            </div>
-
-            <div class="publication">
-                <div class="publication-title">Cross-breed type Bayesian network based intrusion detection system (CBNIDS)</div>
-                <div class="publication-meta">18th International Conference on Computer and Information Technology (ICCIT) | IEEE | 2015</div>
-                <p>Novel intrusion detection system using hybrid Bayesian networks</p>
-            </div>
-
-            <div class="publication">
-                <div class="publication-title">An ensemble framework of anomaly detection using hybridized feature selection approach (HFSA)</div>
-                <div class="publication-meta">SAI Intelligent Systems Conference (IntelliSys) | IEEE | 2015</div>
-                <p>Ensemble learning approach for network anomaly detection</p>
-            </div>
-
-            <div class="publication">
-                <div class="publication-title">An analytical comparison on filter feature extraction method in data mining using J48 classifier</div>
-                <div class="publication-meta">International Journal of Computer Applications, 124(13) | 2015</div>
-                <p>Comparative analysis of feature extraction techniques in data mining</p>
-            </div>
-
-            <div class="publication">
-                <div class="publication-title">Application of machine learning approaches in intrusion detection system: a survey</div>
-                <div class="publication-meta">IJARAI-International Journal of Advanced Research in Artificial Intelligence, 4(3):9–18 | 2015</div>
-                <p>Comprehensive survey of machine learning applications in cybersecurity</p>
-            </div>
-
-            <h3>Papers Under Review</h3>
-            
-            <div class="publication">
-                <div class="publication-title">The Patch That Broke the World: Reddit Crowd On CrowdStrike's Outage</div>
-                <div class="publication-meta">Communications of the ACM (IF: 22.7) | Under Review</div>
-                <p>Analysis of the CrowdStrike incident through social media discourse</p>
-            </div>
-
-            <div class="publication">
-                <div class="publication-title">From Device to Cloud: A Forensic Analysis of the Burner Application in Android Device</div>
-                <div class="publication-meta">DFRWS EU 2026 | Submitted</div>
-                <p>Comprehensive forensic investigation of privacy-focused communication apps
+        </div>
+    </div>
+</body>
+</html>
