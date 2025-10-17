@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdur Rahman Onik - Digital Forensics Researcher</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0066cc;
+            --secondary: #00a8e8;
+            --accent: #6c5ce7;
+            --dark: #1a1a2e;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --text: #2d3436;
+            --text-light: #636e72;
+            --border: #e1e8ed;
+            --success: #00b894;
+            --highlight: #fff3cd;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light-bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+
+        .hero-location {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(255,255,255,0.15);
+            padding: 1.5rem 2rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            margin-top: 0.3rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            color: white;
+            text-decoration: none;
+            padding: 0.7rem 1.5rem;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: white;
+            padding: 1rem 2rem;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            background: white;
+            margin: 2rem 0;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+        }
+
+        section:hover {
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        h2::before {
+            content: '▸';
+            color: var(--secondary);
+            font-size: 2rem;
+        }
+
+        h3 {
+            color: var(--secondary);
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .research-intro {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        .research-intro p {
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .research-intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-text {
+            background: var(--highlight);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .research-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .research-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+            border-radius: 10px 0 0 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .research-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+        }
+
+        .research-card:hover::before {
+            opacity: 1;
+        }
+
+        .research-card h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .research-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .publication {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-left: 4px solid var(--secondary);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .publication:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .publication-title {
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        .publication-meta {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-family: 'Fira Code', monospace;
+            margin-bottom: 0.7rem;
+        }
+
+        .publication p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .publication-badge {
+            display: inline-block;
+            background: var(--success);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .education-item {
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .education-title {
+            color: var(--text);
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-school {
+            color: var(--secondary);
+            font-size: 1.05rem;
+            margin: 0.5rem 0;
+            font-weight: 500;
+        }
+
+        .education-meta {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .skills-container {
+            margin-top: 1.5rem;
+        }
+
+        .skill-category {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .skill-category h4 {
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-family: 'Fira Code', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-tag {
+            background: white;
+            color: var(--primary);
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            border: 2px solid var(--primary);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+        }
+
+        .award-item {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            border-left: 4px solid #fdcb6e;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(253, 203, 110, 0.2);
+        }
+
+        .award-title {
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .award-meta {
+            color: #636e72;
+            font-size: 0.9rem;
+        }
+
+        .experience-item {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-header {
+            margin-bottom: 1rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+            border-radius: 10px;
+        }
+
+        .experience-title {
+            color: var(--primary);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-org {
+            color: var(--secondary);
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+            font-weight: 500;
+        }
+
+        .experience-date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .experience-item ul {
+            margin-left: 2rem;
+            margin-top: 1rem;
+        }
+
+        .experience-item li {
+            color: var(--text-light);
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        .experience-item li::marker {
+            color: var(--primary);
+        }
+
+        .course-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 2px solid var(--border);
+            margin-bottom: 1rem;
+        }
+
+        .course-title {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .course-meta {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0, 102, 204, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        .reviewer-list {
+            margin-left: 2rem;
+            margin-top: 1rem;
+        }
+
+        .reviewer-list li {
+            color: var(--text-light);
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        .reviewer-list li::marker {
+            color: var(--success);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            section {
+                padding: 2rem;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-bg"></div>
+
+    <header class="fade-in">
+        <div class="hero-content">
+            <h1 class="hero-title">ABDUR RAHMAN ONIK</h1>
+            <p class="hero-subtitle">PhD Candidate | Digital Forensics & Cybersecurity Researcher</p>
+            <p class="hero-location">📍 Baton Rouge, Louisiana, USA</p>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">411</div>
+                    <div class="stat-label">Citations</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Publications</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3.8</div>
+                    <div class="stat-label">GPA</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">7+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+            </div>
+
+            <div class="contact-links">
+                <a href="mailto:aonik1@lsu.edu" class="contact-link">📧 aonik1@lsu.edu</a>
+                <a href="https://github.com/rahmanonik" class="contact-link" target="_blank">💻 GitHub</a>
+                <a href="https://linkedin.com/in/rahmanonik18" class="contact-link" target="_blank">💼 LinkedIn</a>
+                <a href="tel:+2258025676" class="contact-link">📱 +225-802-5676</a>
+                <a href="#" class="contact-link" target="_blank">🎓 Google Scholar</a>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#awards">Awards</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="research" class="fade-in">
+            <h2>Research Focus</h2>
+            <div class="research-intro">
+                <p>
+                    My research centers on <strong>security and privacy in mobile applications</strong>, investigating how apps collect, store, and share user data, often contradicting their stated privacy policies. I develop forensic methods to extract and analyze app data from device storage and network traffic, enabling deeper understanding of actual data handling practices.
+                </p>
+                <p>
+                    I am designing a novel framework using <strong>Large Language Models (LLMs)</strong> to automatically parse privacy policies and compare them with empirically observed data collection behaviors. As part of this work, I'm developing the <span class="highlight-text">App Privacy Compliance Index (APCI)</span>, a standardized metric to quantify app transparency and privacy alignment.
+                </p>
+                <p>
+                    My broader goal is to build tools and frameworks that empower end-users, investigators, and regulators to audit mobile applications effectively, bridging the gap between privacy claims and real-world behaviors.
+                </p>
+            </div>
+
+            <h3>Research Areas</h3>
+            <div class="research-grid">
+                <div class="research-card">
+                    <h4>🔍 Mobile Forensics</h4>
+                    <p>Advanced techniques for extracting and analyzing data from mobile devices, with focus on privacy violations and data handling practices</p>
+                </div>
+                <div class="research-card">
+                    <h4>☁️ Cloud Forensics</h4>
+                    <p>Investigating cloud-based data storage and synchronization in IoT devices, telematics, and mobile applications</p>
+                </div>
+                <div class="research-card">
+                    <h4>🔐 Privacy Analysis</h4>
+                    <p>Automated privacy policy analysis using LLMs to detect discrepancies between stated policies and actual behavior</p>
+                </div>
+                <div class="research-card">
+                    <h4>🚗 Vehicle Forensics</h4>
+                    <p>Forensic reconstruction of vehicle events through telematics and driver-based cloud data analysis</p>
+                </div>
+                <div class="research-card">
+                    <h4>💬 Secure Messaging</h4>
+                    <p>Systematic analysis of secure instant messaging applications from digital forensics perspective</p>
+                </div>
+                <div class="research-card">
+                    <h4>🤖 IoT Security</h4>
+                    <p>Security and forensic analysis of Internet of Things devices and their cloud ecosystems</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="fade-in">
+            <h2>Education</h2>
+            
+            <div class="education-item">
+                <div class="education-title">PhD in Computer Science and Engineering</div>
+                <div class="education-school">Louisiana State University, Baton Rouge, LA</div>
+                <div class="education-meta">2022 – Present (Expected Spring 2026) | GPA: 3.8/4.0</div>
+            </div>
+
+            <div class="education-item">
+                <div class="education-title">Master of Science in Computer Science and Engineering</div>
+                <div class="education-school">Louisiana State University, Baton Rouge, LA</div>
+                <div class="education-meta">2022 – 2025 | GPA: 3.8/4.0</div>
+            </div>
+
+            <div class="education-item">
+                <div class="education-title">Bachelor of Science in Computer Science and Engineering</div>
+                <div class="education-school">Ahsanullah University of Science and Technology, Bangladesh</div>
+                <div class="education-meta">2011 – 2015 | GPA: 3.37/4.0</div>
+            </div>
+        </section>
+
+        <section id="publications" class="fade-in">
+            <h2>Publications</h2>
+            <p style="color: var(--text-light); margin-bottom: 2rem; font-size: 1.05rem;">
+                <strong>Total Citations: 411</strong> | <strong>h-index: 7</strong>
+            </p>
+            
+            <div class="publication">
+                <span class="publication-badge">First Author</span>
+                <div class="publication-title">A Systematic Literature Review of Secure Instant Messaging Applications from a Digital Forensics Perspective</div>
+                <div class="publication-meta">ACM Computing Surveys (IF: 28.0, Ranked 1/143 in CS Theory & Methods) | 2025</div>
+                <p>Comprehensive review of secure messaging forensics methodologies and analysis techniques</p>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">Money on My Mind: Forensic Investigation of Venmo Payment App</div>
+                <div class="publication-meta">17th International Workshop on Digital Forensics (WSDF 2025) | Ghent, Belgium</div>
+                <p>Analysis of payment application forensics and data recovery techniques</p>
+            </div>
+
+            <div class="publication">
+                <span class="publication-badge">First Author</span>
+                <div class="publication-title">So fresh, so clean: Cloud forensic analysis of the Amazon iRobot Roomba vacuum</div>
+                <div class="publication-meta">Forensic Science International: Digital Investigation, 48:301686 | Elsevier | 2024</div>
+                <p>Cloud forensics and privacy research on IoT devices</p>
+            </div>
+
+            <div class="publication">
+                <span class="publication-badge">Lead Author</span>
+                <div class="publication-title">Hit and run: Forensic vehicle event reconstruction through driver-based cloud data from Progressive's snapshot application</div>
+                <div class="publication-meta">Forensic Science International: Digital Investigation, 49:301762 | Elsevier | 2024</div>
+                <p>Novel methodology for vehicle event reconstruction using telematics data</p>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">Blue Skies from (X's) Pain: A Digital Forensic Analysis of Threads and Bluesky</div>
+                <div class="publication-meta">19th International Conference on Availability, Reliability and Security (ARES 2024)</div>
+                <p>Forensic methodologies for emerging social media platforms</p>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">A network intrusion detection framework based on Bayesian network using wrapper approach</div>
+                <div class="publication-meta">International Journal of Computer Applications, 166(4):13–17 | 2017</div>
+                <p>Machine learning approach to network security and intrusion detection</p>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">Cross-breed type Bayesian network based intrusion detection system (CBNIDS)</div>
+                <div class="publication-meta">18th International Conference on Computer and Information Technology (ICCIT) | IEEE | 2015</div>
+                <p>Novel intrusion detection system using hybrid Bayesian networks</p>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">An ensemble framework of anomaly detection using hybridized feature selection approach (HFSA)</div>
+                <div class="publication-meta">SAI Intelligent Systems Conference (IntelliSys) | IEEE | 2015</div>
+                <p>Ensemble learning approach for network anomaly detection</p>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">An analytical comparison on filter feature extraction method in data mining using J48 classifier</div>
+                <div class="publication-meta">International Journal of Computer Applications, 124(13) | 2015</div>
+                <p>Comparative analysis of feature extraction techniques in data mining</p>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">Application of machine learning approaches in intrusion detection system: a survey</div>
+                <div class="publication-meta">IJARAI-International Journal of Advanced Research in Artificial Intelligence, 4(3):9–18 | 2015</div>
+                <p>Comprehensive survey of machine learning applications in cybersecurity</p>
+            </div>
+
+            <h3>Papers Under Review</h3>
+            
+            <div class="publication">
+                <div class="publication-title">The Patch That Broke the World: Reddit Crowd On CrowdStrike's Outage</div>
+                <div class="publication-meta">Communications of the ACM (IF: 22.7) | Under Review</div>
+                <p>Analysis of the CrowdStrike incident through social media discourse</p>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">From Device to Cloud: A Forensic Analysis of the Burner Application in Android Device</div>
+                <div class="publication-meta">DFRWS EU 2026 | Submitted</div>
+                <p>Comprehensive forensic investigation of privacy-focused communication apps
